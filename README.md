@@ -1,2 +1,2 @@
 # deploy-simple-model
-Deploying simple model to AWS with Docker and Flask
+Deploying simple machine learning model to AWS Bean Stalk with Docker and Flask.
