@@ -1,7 +1,8 @@
 import pickle
 import numpy as np
 import yaml
-from flask import Flask, request
+import os
+from flask import Flask, request, render_template
 from pathlib import Path
 from typing import Dict, Any
 
@@ -16,7 +17,7 @@ def load_model(config: Dict[str, Any]) -> None:
 
 
 @app.route('/')
-def home_endpoint() -> None:
+def index():
     return 'Hello World!'
 
 
@@ -33,4 +34,4 @@ def get_prediction() -> str:
 if __name__ == '__main__':
     config = yaml.load(Path("config.yml").read_text(), Loader=yaml.SafeLoader)
     load_model(config)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
